@@ -2,6 +2,8 @@ FROM tristansalles/paralem-core:latest
 
 RUN find /live/lib/LavaVu/notebooks -name \*.ipynb  -print0 | xargs -0 jupyter trust
 
+RUN pip install pygeotools
+
 # note we also use xvfb which is required for viz
 ENTRYPOINT ["/usr/local/bin/tini", "--", "xvfbrun.sh"]
 
