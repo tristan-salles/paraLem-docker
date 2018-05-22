@@ -4,6 +4,16 @@ RUN find /live/lib/LavaVu/notebooks -name \*.ipynb  -print0 | xargs -0 jupyter t
 
 RUN pip install pygeotools
 
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends apt-utils
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    python-numpy \
+    gdal-bin \
+    libgdal-dev
+    
+RUN pip install rasterio
+
 # note we also use xvfb which is required for viz
 ENTRYPOINT ["/usr/local/bin/tini", "--", "xvfbrun.sh"]
 
