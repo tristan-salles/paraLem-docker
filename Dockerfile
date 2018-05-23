@@ -14,6 +14,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     
 RUN pip install rasterio
 
+RUN git clone https://github.com/j08lue/pycpt.git && \
+    cd pycpt && \
+    python setup.py install && \
+    cd .. && \
+    rm -rf pycpt
+
 COPY config.ini /root/.config/pipdate
 
 # note we also use xvfb which is required for viz
