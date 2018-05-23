@@ -20,7 +20,11 @@ RUN git clone https://github.com/j08lue/pycpt.git && \
     cd .. && \
     rm -rf pycpt
 
-COPY config.ini /root/.config/pipdate
+RUN mkdir /root/.config/pipdate
+
+WORKDIR /live
+COPY config.ini .
+RUN mv config.ini /root/.config/pipdate
 
 # note we also use xvfb which is required for viz
 ENTRYPOINT ["/usr/local/bin/tini", "--", "xvfbrun.sh"]
