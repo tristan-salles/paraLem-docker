@@ -14,6 +14,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     
 RUN pip install rasterio
 
+RUN sed -i 's/86400/-1/g' /root/.config/pipdate/config.ini
+
 # note we also use xvfb which is required for viz
 ENTRYPOINT ["/usr/local/bin/tini", "--", "xvfbrun.sh"]
 
