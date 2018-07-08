@@ -40,6 +40,8 @@ EXPOSE 8888
 EXPOSE 9999
 
 ENV LD_LIBRARY_PATH=/live/lib/:/live/share
+ENV PETSC_DIR /live/lib/petsc
+ENV PETSC_ARCH arch-linux2-c-opt
 
 # launch notebook
 CMD ["jupyter", "notebook", " --no-browser", "--allow-root", "--ip=0.0.0.0", "--NotebookApp.iopub_data_rate_limit=1.0e10"]
