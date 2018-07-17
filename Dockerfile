@@ -3,6 +3,7 @@ FROM tristansalles/paralem-core:latest
 RUN find /live/lib/LavaVu/notebooks -name \*.ipynb  -print0 | xargs -0 jupyter trust
 
 RUN pip install pygeotools
+RUN pip install ruamel.yaml
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends apt-utils
